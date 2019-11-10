@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2019 at 08:12 AM
+-- Generation Time: Nov 09, 2019 at 03:42 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `opd`
 --
+CREATE DATABASE IF NOT EXISTS `opd` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `opd`;
 
 -- --------------------------------------------------------
 
@@ -34,6 +36,18 @@ CREATE TABLE `login` (
   `Username` varchar(4) NOT NULL,
   `Password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- RELATIONSHIPS FOR TABLE `login`:
+--
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`ID`, `Name`, `Username`, `Password`) VALUES
+(1, 'Tharusha Kudagala', 'D001', 'kt123'),
+(2, 'Yashen Raveesha', 'T1', 'yr123');
 
 --
 -- Indexes for dumped tables
