@@ -31,10 +31,7 @@ public class Login extends javax.swing.JFrame {
         grant.setVisible(true);
     }
     
-    private void TriageLogin(){
-        Triage access = new Triage();
-        access.setVisible(true);
-    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -144,28 +141,29 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Use your username and password to login");
         }
         else{
-// Login to the appropriate account
-        try{
-            sql = "SELECT * FROM login WHERE Username = '"+usernameText.getText()+"' AND Password = '"+passwordText.getText()+"'";
+// Login to the Doctor's account
+            if(usernameText.getText().contains("D")){
+            try{
+            sql = "SELECT * FROM Doctor WHERE ID = '"+usernameText.getText()+"' && pwd = '"+passwordText.getText()+"' ";
             rs = stat.executeQuery(sql);
+            
             if(rs.next()){
-                if(usernameText.getText().equals(rs.getString("Username")) && passwordText.getText().equals(rs.getString("Password")))
-                    if(usernameText.getText().contains("D")){
-                    this.setVisible(false);
-                    DoctorLogin();
-                        }
-                    else if (usernameText.getText().contains("T")){
-                    this.setVisible(false);
-                    TriageLogin();
-                        }
+                    if(usernameText.getText().equals(rs.getString("ID")) && passwordText.getText().equals(rs.getString("pwd"))){
+                        this.setVisible(false);
+                        DoctorLogin();
                     }
+                }
             else{
-                JOptionPane.showMessageDialog(null, "Invalid Username or Password !");
+                    JOptionPane.showMessageDialog(null, "Invalid Username or Password");
+                    }
             }
-        }
-        catch(Exception ex){
-             JOptionPane.showMessageDialog(null, "Error : " + ex.getMessage());
-        }
+            catch(Exception x){
+            JOptionPane.showMessageDialog(null, "Error "+x);
+                }
+            }
+    // Login to HMS's account
+    // Login to Pharmacist's account
+    // Login to Register's account
     }//GEN-LAST:event_jButton1ActionPerformed
     }
     /**
